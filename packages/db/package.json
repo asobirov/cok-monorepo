@@ -1,0 +1,28 @@
+{
+  "name": "@cok/db",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "prebuild": "prisma generate",
+    "dev": "tsup --watch",
+    "predev": "prisma generate",
+    "generate": "prisma generate",
+    "studio": "prisma studio"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.2.1",
+    "dotenv": "^16.0.1"
+  },
+  "devDependencies": {
+    "config": "*",
+    "prisma": "^4.2.1",
+    "tsup": "^6.2.2"
+  }
+}

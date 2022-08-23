@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-custom",
+  "name": "@cok/config",
   "version": "0.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -12,8 +12,5 @@
   },
   "devDependencies": {
     "typescript": "^4.7.4"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
