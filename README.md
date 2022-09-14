@@ -3,10 +3,10 @@
 Currently in progress of assembling all other repositories into this monorepo
 
 ### Projects inlcuded:
-- [] cok web
-- [] cok mobile
-- [] writer
-- [] pum (discord bot)
+- [] [cok web](https://github.com/asobirov/cok) 
+- [] cok mobile (to be developed)
+- [] [writer](https://github.com/asobirov/writer)
+- [] [pum](https://github.com/asobirov/pum) (discord bot)
 - [] a.uz (perhaps?)
 
 ### "Child" projects: 
