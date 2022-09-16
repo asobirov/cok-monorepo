@@ -5,7 +5,7 @@
 ### Projects inlcuded:
 - [ ] @cok/dashboard
 - [ ] @cok/mobile
-- [x] @cok/portfolio
+- [x] @cok/portfolio (submodule)
 - [ ] @cok/nox
 - [ ] project H (needs a name)
 
@@ -13,7 +13,7 @@
 - [ ] @cok/calendar
 - [ ] @cok/writer
 - [ ] @cok/notifications
-- [ ] @cok/tailwind-config
+- [ ] @cok/tailwind-config (submodule)
 - [ ] @cok/env
 
 ### Future possible projects:
