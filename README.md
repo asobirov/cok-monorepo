@@ -1,15 +1,20 @@
 # COK Monorepo
 
-Currently in progress of assembling all other repositories into this monorepo
+## TODO
 
 ### Projects inlcuded:
-- [] [cok web](https://github.com/asobirov/cok) 
-- [] cok mobile (to be developed)
-- [] [writer](https://github.com/asobirov/writer)
-- [] [pum](https://github.com/asobirov/pum) (discord bot)
-- [] a.uz (perhaps?)
+- [ ] @cok/dashboard
+- [ ] @cok/mobile
+- [ ] @cok/portfolio
+- [ ] @cok/nox
+- [ ] project H (needs a name)
 
-### "Child" projects: 
-- [] calendar
-- [] project H
-- []
+### Package projects: 
+- [ ] @cok/calendar
+- [ ] @cok/writer
+- [ ] @cok/notifications
+- [ ] @cok/tailwind-config
+- [ ] @cok/env
+
+### Future possible projects:
+- [ ] Apple Watch app
