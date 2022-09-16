@@ -5,7 +5,7 @@
 ### Projects inlcuded:
 - [ ] @cok/dashboard
 - [ ] @cok/mobile
-- [ ] @cok/portfolio
+- [x] @cok/portfolio
 - [ ] @cok/nox
 - [ ] project H (needs a name)
 
