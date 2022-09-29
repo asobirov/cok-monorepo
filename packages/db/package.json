@@ -14,16 +14,17 @@
     "dev": "tsup --watch",
     "predev": "prisma generate",
     "generate": "prisma generate",
+    "push": "prisma db push",
     "studio": "prisma studio"
   },
   "dependencies": {
-    "@prisma/client": "^4.3.1",
+    "@prisma/client": "^4.4.0",
     "dotenv": "^16.0.1"
   },
   "devDependencies": {
     "@types/node": "^18.7.18",
     "config": "*",
-    "prisma": "^4.3.1",
+    "prisma": "^4.4.0",
     "tsup": "^6.2.2"
   }
 }
