@@ -11,12 +11,16 @@
 - [ ] project H (needs a name)
 
 ### Package projects: 
+- [ ] @cok/components (sub monorepo of components)
+
+    Possible solutions/tools: [plopjs](https://github.com/plopjs/plop)
+
+    - [ ] @cok/components/Portal
 - [ ] @cok/calendar
 - [ ] @cok/writer
 - [ ] @cok/notifications
 - [ ] @cok/tailwind-config (submodule)
 - [ ] @cok/env
-- [ ] @cok/components (sub monorepo of components)
 
 ### Future possible projects:
 - [ ] Apple Watch app
