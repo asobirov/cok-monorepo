@@ -1,10 +1,10 @@
 # COK Monorepo
 
 ## TODO
-- [ ] Decide on the database provider (Planetscale, Supabase or self-hosted)
+- [x] Decide on the database provider (Planetscale, Supabase or self-hosted)
 
 ### Projects inlcuded:
-- [ ] @cok/dashboard
+- [ ] @cok/dashboard (submodule)
 - [ ] @cok/mobile
 - [x] @cok/portfolio (submodule)
 - [ ] @cok/nox
