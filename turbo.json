@@ -1,8 +1,8 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "globalDependencies": [
+  "globalEnv": [
     ".env",
-    "$NODE_ENV"
+    "NODE_ENV"
   ],
   "pipeline": {
     "build": {
@@ -11,9 +11,7 @@
       ],
       "outputs": [
         "dist/**",
-        ".next/**",
-        "build/**",
-        "public/build/**"
+        ".next/**"
       ]
     },
     "lint": {
@@ -21,6 +19,18 @@
     },
     "dev": {
       "cache": false
-    }
+    },
+    "db:gen": {
+      "dependsOn": [
+        "^db:gen"
+      ]
+    },
+    "db:push": {
+      "outputs": []
+    },
+    "db:studio": {
+      "outputs": []
+    },
+    "postinstall": {}
   }
 }

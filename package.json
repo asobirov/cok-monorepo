@@ -6,18 +6,20 @@
     "apps/*",
     "packages/*"
   ],
+  "prisma": {
+    "schema": "packages/db/prisma/schema.prisma"
+  },
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "db:gen": "yarn workspace @cok/db generate",
-    "db:push": "yarn workspace @cok/db push",
-    "db:studio": "yarn workspace @cok/db studio"
+    "db:gen": "turbo run db:gen",
+    "db:push": "turbo run db:push",
+    "db:studio": "turbo run db:studio",
+    "postinstall": "turbo run postinstall"
   },
-  "dependencies": {},
   "devDependencies": {
-    "eslint-config-custom": "*",
     "prettier": "latest",
     "turbo": "latest",
     "vercel-submodules": "^1.0.6"
@@ -26,5 +28,5 @@
     "npm": ">=7.0.0",
     "node": ">=16.0.0"
   },
-  "packageManager": "yarn@1.23.0-20210726.1745"
+  "packageManager": "pnpm@7.13.3"
 }
