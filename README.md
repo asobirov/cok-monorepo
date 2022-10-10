@@ -4,9 +4,10 @@
 - [x] Decide on the database provider (Planetscale, Supabase or self-hosted)
 
 ### Projects inlcuded:
-- [ ] @cok/dashboard (submodule)
-- [ ] @cok/mobile
+- [x] @cok/dashboard (submodule)
 - [x] @cok/portfolio (submodule)
+- [x] @cok/pax
+- [ ] @cok/mobile
 - [ ] @cok/nox
 - [ ] project H (needs a name)
 
