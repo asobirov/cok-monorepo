@@ -1,7 +1,7 @@
 {
   "name": "@cok/db",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "dist/index.d.ts",
   "license": "MIT",
@@ -9,8 +9,8 @@
     "dist/**"
   ],
   "scripts": {
+    "postinstall": "prisma generate",
     "build": "tsup",
-    "prebuild": "prisma generate",
     "clean": "rimraf .turbo node_modules dist",
     "dev": "tsup --watch",
     "predev": "prisma generate",
@@ -25,6 +25,7 @@
     "dotenv": "^16.0.1"
   },
   "devDependencies": {
+    "@cok/tsconfig": "*",
     "@types/node": "^18.7.18",
     "config": "*",
     "prisma": "^4.4.0",

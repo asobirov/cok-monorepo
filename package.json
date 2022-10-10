@@ -2,25 +2,23 @@
   "name": "@cok/root",
   "version": "0.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "prisma": {
     "schema": "packages/db/prisma/schema.prisma"
   },
   "scripts": {
+    "postinstall": "turbo run postinstall",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "clean": "turbo run clean && rimraf node_modules .turbo",
     "db:gen": "turbo run db:gen",
     "db:push": "turbo run db:push",
-    "db:studio": "turbo run db:studio",
-    "postinstall": "turbo run postinstall"
+    "db:studio": "turbo run db:studio"
   },
   "devDependencies": {
     "prettier": "latest",
+    "rimraf": "^3.0.2",
     "turbo": "latest",
     "vercel-submodules": "^1.0.6"
   },
