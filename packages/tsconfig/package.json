@@ -2,7 +2,9 @@
   "name": "@cok/tsconfig",
   "version": "0.0.0",
   "private": true,
-  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "base.json",
     "nextjs.json",

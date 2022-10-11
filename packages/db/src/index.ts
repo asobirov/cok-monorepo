@@ -1,4 +1,3 @@
-// src/server/db/client.ts
 import { PrismaClient } from "@prisma/client";
 import dotenv from "dotenv";
 
@@ -11,7 +10,7 @@ declare global {
 export const prisma =
     global.prisma ||
     new PrismaClient({
-        log: ["query"],
+        log: process.env.NODE_ENV !== "production" ? ["query"] : [],
     });
 
 if (process.env.NODE_ENV !== "production") {
