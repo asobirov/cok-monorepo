@@ -3,7 +3,6 @@ import { withTRPC } from "@trpc/next";
 import type { AppRouter } from "../server/router";
 import type { AppProps } from "next/app";
 import superjson from "superjson";
-import { SessionProvider } from "next-auth/react";
 import "../styles/globals.css";
 import { Session } from "next-auth";
 

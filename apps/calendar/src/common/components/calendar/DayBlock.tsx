@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { isFirstDayOfMonth, isSameDay, isSameMonth } from 'date-fns';
+import { isFirstDayOfMonth, isSameDay } from 'date-fns';
 
 type DayBlockProps = {
     date: Date;
@@ -45,7 +45,6 @@ const Day: React.FC<{
     isInActiveMonth: boolean;
 }> = ({ date, today, isSelected, isInActiveMonth }) => {
     const dayNumber = date.getDate();
-    const dayValue = dayNumber === 1 ? `${dayNumber} ${date.toLocaleString('default', { month: 'short' })}` : dayNumber;
     const isToday = isSameDay(date, today);
 
     const isFirstDay = isFirstDayOfMonth(date);
