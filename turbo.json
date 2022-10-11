@@ -21,6 +21,12 @@
     "dev": {
       "cache": false
     },
+    "@cok/monorepo#dev": {
+      "cache": false,
+      "dependsOn": [
+        "@cok/db#dev"
+      ]
+    },
     "db:gen": {
       "dependsOn": [
         "^db:gen"

@@ -13,6 +13,7 @@
     "postinstall": "turbo run postinstall",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
+    "dev:dashboard": "turbo run dev --filter=dashboard...",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "clean": "turbo run clean",
