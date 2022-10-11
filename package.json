@@ -2,6 +2,10 @@
   "name": "@cok/root",
   "version": "0.0.0",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "prisma": {
     "schema": "packages/db/prisma/schema.prisma"
   },
@@ -11,7 +15,7 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "clean": "turbo run clean && rimraf node_modules .turbo",
+    "clean": "turbo run clean",
     "db:gen": "turbo run db:gen",
     "db:push": "turbo run db:push",
     "db:studio": "turbo run db:studio"
@@ -31,5 +35,5 @@
     "npm": ">=7.0.0",
     "node": ">=16.0.0"
   },
-  "packageManager": "pnpm@7.13.3"
+  "packageManager": "yarn@1.23.0-20210726.1745"
 }
