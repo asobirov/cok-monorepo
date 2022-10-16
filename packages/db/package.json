@@ -1,18 +1,13 @@
 {
   "name": "@cok/db",
   "version": "1.0.0",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./index.ts",
+  "types": "./index.ts",
   "license": "MIT",
-  "files": [
-    "dist/**"
-  ],
   "scripts": {
     "postinstall": "prisma generate",
     "build": "tsup",
     "clean": "rimraf .turbo node_modules dist",
-    "dev": "tsup --watch",
     "predev": "prisma generate",
     "prebuild": "prisma generate",
     "db:gen": "prisma generate",

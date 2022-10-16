@@ -123,3 +123,15 @@ enum TaskStatus {
   IN_PROGRESS
   DONE
 }
+
+model MoodReport {
+  id String @id @default(cuid())
+
+  energyRating Int @db.SmallInt
+  moodRating   Int @db.SmallInt
+
+  comment String?
+
+  reportedAt DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
