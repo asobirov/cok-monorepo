@@ -5,15 +5,14 @@
   "types": "./index.ts",
   "license": "MIT",
   "scripts": {
-    "postinstall": "prisma generate",
     "clean": "rimraf .turbo node_modules dist",
-    "predev": "prisma generate",
-    "prebuild": "prisma generate",
     "db:gen": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate:deploy": "prisma migrate deploy",
     "db:migrate:dev": "prisma migrate dev",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "db:reset": "prisma migrate reset",
+    "db:seed": "prisma db seed"
   },
   "dependencies": {
     "@prisma/client": "^4.4.0",

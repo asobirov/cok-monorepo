@@ -2,10 +2,6 @@
   "name": "@cok/root",
   "version": "0.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "prisma": {
     "schema": "packages/db/prisma/schema.prisma"
   },
@@ -36,5 +32,5 @@
     "npm": ">=7.0.0",
     "node": ">=16.0.0"
   },
-  "packageManager": "yarn@1.23.0-20210726.1745"
+  "packageManager": "pnpm@7.13.4"
 }

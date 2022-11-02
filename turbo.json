@@ -1,43 +1,37 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "globalEnv": [
-    ".env",
-    "NODE_ENV"
-  ],
   "pipeline": {
+    "postinstall": {},
     "build": {
       "dependsOn": [
-        "^build"
+        "^build",
+        "^db:gen"
       ],
       "outputs": [
         "dist/**",
         ".next/**"
       ]
     },
+    "dev": {
+      "dependsOn": [
+        "^db:gen"
+      ],
+      "cache": false
+    },
     "lint": {
       "outputs": []
     },
-    "clean": {},
-    "dev": {
+    "clean": {
       "cache": false
     },
-    "@cok/monorepo#dev": {
-      "cache": false,
-      "dependsOn": [
-        "@cok/db#dev"
-      ]
-    },
     "db:gen": {
-      "dependsOn": [
-        "^db:gen"
-      ]
+      "cache": true
     },
     "db:push": {
-      "outputs": []
+      "cache": false
     },
     "db:studio": {
-      "outputs": []
-    },
-    "postinstall": {}
+      "cache": false
+    }
   }
 }
