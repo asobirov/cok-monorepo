@@ -15,7 +15,9 @@
     "clean": "turbo run clean",
     "db:gen": "turbo run db:gen",
     "db:push": "turbo run db:push",
-    "db:studio": "turbo run db:studio"
+    "db:migrate": "turbo run db:migrate",
+    "db:studio": "turbo run db:studio",
+    "create:pkg": "plop package"
   },
   "devDependencies": {
     "prettier": "latest",
