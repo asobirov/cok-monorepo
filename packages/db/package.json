@@ -10,18 +10,17 @@
     "db:push": "prisma db push",
     "db:migrate:deploy": "prisma migrate deploy",
     "db:migrate:dev": "prisma migrate dev",
-    "db:migrate": "prisma migrate",
     "db:studio": "prisma studio",
     "db:reset": "prisma migrate reset",
     "db:seed": "prisma db seed"
   },
   "dependencies": {
-    "@prisma/client": "^4.5.0",
+    "@prisma/client": "^4.6.0",
     "dotenv": "^16.0.1"
   },
   "devDependencies": {
     "@cok/tsconfig": "*",
-    "prisma": "^4.5.0",
+    "prisma": "^4.6.0",
     "rimraf": "^3.0.2",
     "typescript": "^4.8.4"
   }

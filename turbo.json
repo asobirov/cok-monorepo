@@ -25,12 +25,14 @@
       "cache": false
     },
     "db:gen": {
+      "inputs": ["prisma/schema.prisma"],
       "cache": false
     },
     "db:push": {
+      "inputs": ["prisma/schema.prisma"],
       "cache": false
     },
-    "db:migrate": {
+    "db:migrate:dev": {
       "cache": false
     },
     "db:studio": {
