@@ -1,0 +1,11 @@
+{
+  "extends": "@cok/tsconfig/nextjs.json",
+  "include": [
+    "next-env.d.ts",
+    "node_modules/@cok/auth-core/next-auth.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.cjs",
+    "**/*.mjs"
+  ]
+}
