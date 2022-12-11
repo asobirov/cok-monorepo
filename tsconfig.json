@@ -1,0 +1,7 @@
+{
+  "extends": "@cok/tsconfig/node.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [".eslintrc.cjs"]
+}

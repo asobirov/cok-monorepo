@@ -6,22 +6,24 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf .turbo node_modules dist",
-    "db:gen": "prisma generate",
-    "db:push": "prisma db push",
-    "db:migrate:deploy": "prisma migrate deploy",
-    "db:migrate:dev": "prisma migrate dev",
-    "db:studio": "prisma studio",
-    "db:reset": "prisma migrate reset",
-    "db:seed": "prisma db seed"
+    "with-env": "dotenv -e ../../.env --",
+    "db:gen": "pnpm with-env prisma generate",
+    "db:push": "pnpm with-env prisma db push",
+    "db:migrate:deploy": "pnpm with-env prisma migrate deploy",
+    "db:migrate:dev": "pnpm with-env prisma migrate dev",
+    "db:migrate": "pnpm db:migrate:dev",
+    "db:studio": "pnpm with-env prisma studio",
+    "db:reset": "pnpm with-env prisma migrate reset",
+    "db:seed": "pnpm with-env prisma db seed"
   },
   "dependencies": {
-    "@prisma/client": "^4.6.0",
-    "dotenv": "^16.0.1"
+    "@prisma/client": "^4.7.1"
   },
   "devDependencies": {
     "@cok/tsconfig": "*",
-    "prisma": "^4.6.0",
+    "dotenv-cli": "^6.0.0",
+    "prisma": "^4.7.1",
     "rimraf": "^3.0.2",
-    "typescript": "^4.8.4"
+    "typescript": "^4.9.4"
   }
 }

@@ -1,7 +1,30 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
-    "postinstall": {},
+    "db:gen": {
+      "inputs": [
+        "prisma/schema.prisma"
+      ],
+      "cache": false
+    },
+    "db:push": {
+      "inputs": [
+        "prisma/schema.prisma"
+      ],
+      "cache": false
+    },
+    "db:migrate:dev": {
+      "cache": false
+    },
+    "db:studio": {
+      "cache": false
+    },
+    "dev": {
+      "dependsOn": [
+        "^db:gen"
+      ],
+      "cache": false
+    },
     "build": {
       "dependsOn": [
         "^build",
@@ -12,31 +35,25 @@
         ".next/**"
       ]
     },
-    "dev": {
-      "dependsOn": [
-        "^db:gen"
-      ],
-      "cache": false
-    },
     "lint": {
       "outputs": []
     },
     "clean": {
       "cache": false
     },
-    "db:gen": {
-      "inputs": ["prisma/schema.prisma"],
+    "//#clean": {
       "cache": false
     },
-    "db:push": {
-      "inputs": ["prisma/schema.prisma"],
-      "cache": false
-    },
-    "db:migrate:dev": {
-      "cache": false
-    },
-    "db:studio": {
+    "type-check": {
+      "dependsOn": [
+        "^db-generate"
+      ],
       "cache": false
     }
-  }
+  },
+  "globalEnv": [
+    "DATABASE_URL",
+    "NEXTAUTH_SECRET",
+    "NEXTAUTH_URL"
+  ]
 }

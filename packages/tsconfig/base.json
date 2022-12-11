@@ -6,9 +6,9 @@
     "declaration": true,
     "declarationMap": true,
     "esModuleInterop": true,
-    
+    "allowJs": true,
+    "noEmit": true,
     "inlineSources": false,
-
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "moduleResolution": "node",

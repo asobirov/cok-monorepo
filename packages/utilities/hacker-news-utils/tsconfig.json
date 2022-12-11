@@ -1,4 +1,4 @@
 {
-  "extends": "@cok/tsconfig/node16.json",
+  "extends": "@cok/tsconfig/node.json",
   "include": ["src", "index.ts"]
 }
