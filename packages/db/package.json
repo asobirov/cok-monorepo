@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@cok/tsconfig": "*",
+    "@types/node": "^18.11.13",
     "dotenv-cli": "^6.0.0",
     "prisma": "^4.7.1",
     "rimraf": "^3.0.2",
