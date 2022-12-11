@@ -1,4 +1,4 @@
 {
-  "dotenv.enableAutocloaking": false,
-  "tailwindCSS.classAttributes": ["class", "className", "ngClass", "tw"]
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass", "tw"],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
