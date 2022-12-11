@@ -6,7 +6,6 @@
     "schema": "packages/db/prisma/schema.prisma"
   },
   "scripts": {
-    "postinstall": "turbo run postinstall",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "dev:dashboard": "turbo run dev --filter=dashboard...",
