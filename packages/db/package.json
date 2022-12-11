@@ -17,12 +17,12 @@
     "db:seed": "pnpm with-env prisma db seed"
   },
   "dependencies": {
-    "@prisma/client": "^4.6.0"
+    "@prisma/client": "^4.7.1"
   },
   "devDependencies": {
     "@cok/tsconfig": "*",
     "dotenv-cli": "^6.0.0",
-    "prisma": "^4.6.0",
+    "prisma": "^4.7.1",
     "rimraf": "^3.0.2",
     "typescript": "^4.9.4"
   }
