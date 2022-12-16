@@ -1,5 +1,4 @@
 {
-    "extends": "@cok/tsconfig/node.json",
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-    "exclude": ["node_modules"]
-  }
+  "extends": "@cok/tsconfig/node.json",
+  "include": ["index.ts"]
+}

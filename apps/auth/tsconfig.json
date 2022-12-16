@@ -1,5 +1,6 @@
 {
   "extends": "@cok/tsconfig/nextjs.json",
+  "exclude": [],
   "include": [
     "next-env.d.ts",
     "node_modules/@cok/auth-core/next-auth.d.ts",

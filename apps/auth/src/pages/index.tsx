@@ -4,7 +4,11 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <h1>@cok/auth</h1>
+      <div className="container flex items-center justify-center">
+        <div className="button">
+          Sign in with GitHub
+        </div>
+      </div>
     </>
   );
 };
