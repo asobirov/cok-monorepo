@@ -1,13 +1,16 @@
 {
-  "name": "@cok/{{packageName}}",
+  "name": "@cok/env",
   "version": "0.0.1",
-  "description": "{{description}}",
+  "description": "",
   "keywords": [
-    "{{packageName}}"
+    "env"
   ],
   "main": "src/index.ts",
+  "files": [
+    "dist"
+  ],
   "repository": {
-    "directory": "{{outDir}}/{{packageName}}"
+    "directory": "packages/env"
   },
   "scripts": {
     "clean": "rimraf .turbo node_modules"
@@ -15,6 +18,10 @@
   "devDependencies": {
     "@cok/tsconfig": "workspace:*",
     "rimraf": "^3.0.2",
+    "tsup": "^4.14.0",
     "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "envsafe": "^2.0.3"
   }
 }

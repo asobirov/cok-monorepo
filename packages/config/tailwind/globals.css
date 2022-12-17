@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: Poppins, Avenir Next, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  transition-duration: 250ms;
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
+
+  @apply md:!overflow-unset bg-primary-dark text-whiteAlpha-900;
+}
+
+::selection {
+  @apply text-whiteAlpha-500 bg-none;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@layer components {
+  .container {
+    min-width: 16rem;
+    transition: padding 0.8s ease-in-out, max-width 0.8s ease, box-shadow 250ms;
+    @apply max-w-[26rem] sm:max-w-[38rem] md:max-w-[45rem] lg:max-w-[60rem];
+  }
+
+  .button {
+    @apply border-blackAlpha-700 hover:bg-blackAlpha-200 active:border-transparent-black active:bg-blackAlpha-300 dark:border-whiteAlpha-300 hover:dark:bg-whiteAlpha-200 active:dark:border-transparent-white flex select-none items-center justify-center rounded-[1.25rem] border active:border-0 active:dark:bg-black;
+  }
+
+  .color-on-hover {
+    @apply text-blackAlpha-700 dark:text-whiteAlpha-700 hover:text-black active:text-black dark:hover:text-white dark:active:text-white;
+  }
+
+  /** Buttons */
+
+  .icon-button {
+    @apply ease flex aspect-square cursor-pointer items-center justify-center rounded-2xl border p-3 text-xs transition-colors duration-100;
+  }
+
+  .icon-button.solid {
+    @apply bg-blackAlpha-700 border-whiteAlpha-200 hover:bg-whiteAlpha-200;
+  }
+
+  .icon-button.outline {
+    @apply border-whiteAlpha-50 hover:bg-whiteAlpha-200;
+  }
+
+  .icon-button.ghost {
+    @apply hover:bg-whiteAlpha-50 border-white/0;
+  }
+
+  .icon-button[data-active] {
+    @apply !border-whiteAlpha-200;
+  }
+}
+
+@layer utilities {
+  .overflow-unset {
+    overflow: unset;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ease {
+    transition-timing-function: ease;
+  }
+}

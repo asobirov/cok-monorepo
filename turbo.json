@@ -1,7 +1,7 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
-    "db:gen": {
+    "db:generate": {
       "inputs": [
         "prisma/schema.prisma"
       ],
@@ -21,14 +21,14 @@
     },
     "dev": {
       "dependsOn": [
-        "^db:gen"
+        "^db:generate"
       ],
       "cache": false
     },
     "build": {
       "dependsOn": [
         "^build",
-        "^db:gen"
+        "^db:generate"
       ],
       "outputs": [
         "dist/**",
@@ -51,6 +51,9 @@
       "cache": false
     }
   },
+  "globalDependencies": [
+    ".env"
+  ],
   "globalEnv": [
     "DATABASE_URL",
     "NEXTAUTH_SECRET",

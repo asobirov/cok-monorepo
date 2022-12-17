@@ -4,15 +4,17 @@ import GitHubProvider from "next-auth/providers/github";
 import { prisma } from "@cok/db";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
-import { env } from "./env";
+import { env } from "@cok/env";
 
 export const authOptions: NextAuthOptions = {
+  // Configure one or more authentication providers
   adapter: PrismaAdapter(prisma),
   providers: [
     GitHubProvider({
       clientId: env.GITHUB_CLIENT_ID,
       clientSecret: env.GITHUB_CLIENT_SECRET,
-    }),
+    })
+    // ...add more providers here
   ],
   callbacks: {
     session({ session, user }) {
@@ -24,14 +26,14 @@ export const authOptions: NextAuthOptions = {
   },
   cookies: {
     sessionToken: {
-      name: "cok-auth.session-token",
+      name: "cok.session-token",
       options: {
-        httpOnly: true,
-        sameSite: 'lax',
-        secure: env.NODE_ENV !== 'development',
+        domain: env.NODE_ENV !== 'development' ? '.my-service.com' : undefined,
         path: '/',
-        domain: env.NODE_ENV === 'development' ? undefined : '.xpr.im',
-      }
+        httpOnly: true,
+        secure: env.NODE_ENV !== 'development',
+        sameSite: 'lax',
+      },
     }
   }
 };

@@ -1,0 +1,16 @@
+{
+  "name": "@cok/next-config",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "files": [
+    "with-nextra.js"
+  ],
+  "dependencies": {
+    "nextra": "^2.0.1",
+    "nextra-theme-docs": "^2.0.1"
+  },
+  "devDependencies": {
+    "@cok/tsconfig": "workspace:*"
+  }
+}

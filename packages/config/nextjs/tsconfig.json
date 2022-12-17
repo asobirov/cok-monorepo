@@ -1,0 +1,4 @@
+{
+    "extends": "@cok/tsconfig/nextjs.json",
+    "include": ["**/*.ts", "**/*.tsx"],
+}

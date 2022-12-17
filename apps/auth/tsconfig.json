@@ -3,10 +3,14 @@
   "exclude": [],
   "include": [
     "next-env.d.ts",
-    "node_modules/@cok/auth-core/next-auth.d.ts",
+    "../../packages/core/auth/next-auth.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs"
-  ]
+  ],
+  "compilerOptions": {
+    "incremental": true,
+    "jsx": "preserve"
+  }
 }

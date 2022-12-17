@@ -8,11 +8,12 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
+    "dev:auth": "turbo run dev --filter=auth...",
     "dev:dashboard": "turbo run dev --filter=dashboard...",
     "lint": "turbo run lint && manypkg check",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "clean": "turbo run clean",
-    "db:gen": "turbo run db:gen",
+    "db:generate": "turbo run db:generate",
     "db:push": "turbo run db:push",
     "db:migrate:dev": "turbo run db:migrate:dev",
     "db:studio": "turbo run db:studio",

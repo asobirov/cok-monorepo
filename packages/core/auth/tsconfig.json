@@ -1,4 +1,4 @@
 {
-  "extends": "@cok/tsconfig/base.json",
+  "extends": "@cok/tsconfig/nextjs.json",
   "include": ["src", "index.ts", "next-auth.d.ts"]
 }
