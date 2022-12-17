@@ -1,4 +1,4 @@
-import { type NextAuthOptions } from "next-auth";
+import type { NextAuthOptions } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 
 import { prisma } from "@cok/db";
@@ -6,11 +6,11 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 import { env } from "@cok/env";
 
-const cookiePrefixBase = "cok-auth";
-const cookiePrefix = env.NODE_ENV === "production" ? `'__Secure-${cookiePrefixBase}` : `${cookiePrefixBase}`;
+const cookiesPrefixBase = "cok-auth";
+const useSecureCookies = !!env.VERCEL_URL || !!env.NEXTAUTH_URL;
+const cookiesPrefix = useSecureCookies ? `'__Secure-${cookiesPrefixBase}` : `${cookiesPrefixBase}`;
 
 export const authOptions: NextAuthOptions = {
-  // Configure one or more authentication providers
   secret: env.NEXTAUTH_SECRET,
   adapter: PrismaAdapter(prisma),
   providers: [
@@ -18,7 +18,6 @@ export const authOptions: NextAuthOptions = {
       clientId: env.GITHUB_CLIENT_ID,
       clientSecret: env.GITHUB_CLIENT_SECRET,
     })
-    // ...add more providers here
   ],
   callbacks: {
     session({ session, user }) {
@@ -30,7 +29,7 @@ export const authOptions: NextAuthOptions = {
   },
   cookies: {
     sessionToken: {
-      name: `${cookiePrefix}.session-token`,
+      name: `${cookiesPrefix}.session-token`,
       options: {
         domain: env.NODE_ENV !== 'development' ? '.xpr.im' : undefined,
         path: '/',
@@ -39,15 +38,5 @@ export const authOptions: NextAuthOptions = {
         sameSite: 'lax',
       },
     },
-    csrfToken: {
-      name: `${cookiePrefix}.csrf-token`,
-      options: {
-        domain: env.NODE_ENV !== 'development' ? '.xpr.im' : undefined,
-        path: '/',
-        httpOnly: true,
-        secure: env.NODE_ENV !== 'development',
-        sameSite: 'lax',
-      }
-    }
   }
 };
