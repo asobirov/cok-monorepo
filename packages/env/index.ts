@@ -6,9 +6,11 @@ export const env = envsafe({
     }),
 
     VERCEL_URL: str({
+        default: '',
         allowEmpty: true,
     }),
     NEXTAUTH_URL: str({
+        default: '',
         allowEmpty: true,
     }),
 
