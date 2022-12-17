@@ -6,6 +6,9 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 import { env } from "@cok/env";
 
+const cookiePrefixBase = "cok-auth";
+const cookiePrefix = env.NODE_ENV === "production" ? `'__Secure-${cookiePrefixBase}` : `${cookiePrefixBase}`;
+
 export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   secret: env.NEXTAUTH_SECRET,
@@ -27,7 +30,7 @@ export const authOptions: NextAuthOptions = {
   },
   cookies: {
     sessionToken: {
-      name: "cok-auth.session-token",
+      name: `${cookiePrefix}.session-token`,
       options: {
         domain: env.NODE_ENV !== 'development' ? '.xpr.im' : undefined,
         path: '/',
@@ -37,7 +40,7 @@ export const authOptions: NextAuthOptions = {
       },
     },
     csrfToken: {
-      name: "cok-auth.csrf-token",
+      name: `${cookiePrefix}.csrf-token`,
       options: {
         domain: env.NODE_ENV !== 'development' ? '.xpr.im' : undefined,
         path: '/',
