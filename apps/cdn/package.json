@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@cok/api": "*",
+    "@cok/auth-core": "*",
     "@cok/db": "*",
     "@cok/env": "*",
     "@cok/tailwind-config": "*",
@@ -28,7 +29,7 @@
     "zod": "^3.20.0"
   },
   "devDependencies": {
-    "@cok/tsconfig": "workspace:*",
+    "@cok/tsconfig": "*",
     "@types/node": "^18.0.0",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
