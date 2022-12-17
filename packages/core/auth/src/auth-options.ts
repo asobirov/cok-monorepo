@@ -29,12 +29,22 @@ export const authOptions: NextAuthOptions = {
     sessionToken: {
       name: "cok.session-token",
       options: {
-        domain: env.NODE_ENV !== 'development' ? '.my-service.com' : undefined,
+        domain: env.NODE_ENV !== 'development' ? '.xpr.im' : undefined,
         path: '/',
         httpOnly: true,
         secure: env.NODE_ENV !== 'development',
         sameSite: 'lax',
       },
+    },
+    csrfToken: {
+      name: "cok.csrf-token",
+      options: {
+        domain: env.NODE_ENV !== 'development' ? '.xpr.im' : undefined,
+        path: '/',
+        httpOnly: true,
+        secure: env.NODE_ENV !== 'development',
+        sameSite: 'lax',
+      }
     }
   }
 };
