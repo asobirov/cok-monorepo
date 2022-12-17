@@ -6,6 +6,8 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 import { env } from "@cok/env";
 
+const BASE_DOMAIN = "xpr.im";
+
 const cookiesPrefixBase = "cok-auth";
 const useSecureCookies = !!env.VERCEL_URL || !!env.NEXTAUTH_URL;
 const cookiesPrefix = useSecureCookies ? `'__Secure-${cookiesPrefixBase}` : `${cookiesPrefixBase}`;
@@ -26,12 +28,21 @@ export const authOptions: NextAuthOptions = {
       }
       return session;
     },
+    redirect: async ({ url, baseUrl }) => {
+      const parsed = new URL(url, baseUrl);
+
+      if (parsed.hostname.endsWith(BASE_DOMAIN)) {
+        return parsed.toString();
+      }
+
+      return baseUrl;
+    },
   },
   cookies: {
     sessionToken: {
       name: `${cookiesPrefix}.session-token`,
       options: {
-        domain: env.NODE_ENV !== 'development' ? '.xpr.im' : undefined,
+        domain: env.NODE_ENV !== 'development' ? `.${BASE_DOMAIN}` : undefined,
         path: '/',
         httpOnly: true,
         secure: env.NODE_ENV !== 'development',
