@@ -8,6 +8,7 @@ import { env } from "@cok/env";
 
 export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
+  secret: env.NEXTAUTH_SECRET,
   adapter: PrismaAdapter(prisma),
   providers: [
     GitHubProvider({
