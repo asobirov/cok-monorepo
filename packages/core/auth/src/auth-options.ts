@@ -27,7 +27,7 @@ export const authOptions: NextAuthOptions = {
   },
   cookies: {
     sessionToken: {
-      name: "cok.session-token",
+      name: "cok-auth.session-token",
       options: {
         domain: env.NODE_ENV !== 'development' ? '.xpr.im' : undefined,
         path: '/',
@@ -37,7 +37,7 @@ export const authOptions: NextAuthOptions = {
       },
     },
     csrfToken: {
-      name: "cok.csrf-token",
+      name: "cok-auth.csrf-token",
       options: {
         domain: env.NODE_ENV !== 'development' ? '.xpr.im' : undefined,
         path: '/',
