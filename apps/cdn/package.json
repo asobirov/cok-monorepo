@@ -21,6 +21,8 @@
     "@trpc/next": "^10.5.0",
     "@trpc/react-query": "^10.5.0",
     "@trpc/server": "^10.5.0",
+    "axios": "^1.2.1",
+    "iconoir-react": "^5.1.4",
     "next": "^13.0.7",
     "next-auth": "^4.18.6",
     "next-themes": "^0.2.1",

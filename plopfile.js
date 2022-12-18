@@ -1,5 +1,5 @@
 
-const workspaces = ["packages", "packages/utilities", "packages/components", "packages/tools"];
+const workspaces = ["packages", "packages/utilities", "packages/components", "packages/core"];
 
 /**
  * @param {import("plop").NodePlopAPI} plop
