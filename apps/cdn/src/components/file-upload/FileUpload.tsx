@@ -30,14 +30,17 @@ export const FileUpload: React.FC = () => {
 
             console.log("Sending file", file.name, "to", presignedUrl.url)
 
-            const response = await axios.post(presignedUrl.url, form, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                    'Access-Control-Allow-Origin': '*'
-                }
-            });
-
-            console.log(response);
+            try {
+                const response = await axios.post(presignedUrl.url, form, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Headers': '*',
+                    }
+                });
+            } catch (error) {
+                console.log(error);
+            }
         }
 
         setDroppedFiles(null);
