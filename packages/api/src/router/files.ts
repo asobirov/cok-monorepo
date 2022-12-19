@@ -3,9 +3,10 @@ import { z } from 'zod';
 import { protectedProcedure, publicProcedure, router } from "../trpc";
 
 import { getObjects, generatePresignedUploadUrl } from '@cok/files-core';
+import { Roles } from '@cok/db';
 
 export const filesRouter = router({
-    getFiles: protectedProcedure.query(() => {
+    getFiles: protectedProcedure([Roles.ADMIN]).query(() => {
         return getObjects();
     }),
     getPresignedUrl: publicProcedure

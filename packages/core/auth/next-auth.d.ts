@@ -1,5 +1,5 @@
 import { DefaultSession } from "next-auth";
-
+import { Roles } from "@cok/db";
 /**
  * Module augmentation for `next-auth` types
  * Allows us to add custom properties to the `session` object
@@ -11,6 +11,11 @@ declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
       id: string;
+      role: Roles
     } & DefaultSession["user"];
+  }
+
+  interface User {
+    role?: Role;
   }
 }

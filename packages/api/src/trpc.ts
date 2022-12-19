@@ -2,6 +2,8 @@ import { initTRPC, TRPCError } from "@trpc/server";
 import { type Context } from "./context";
 import superjson from "superjson";
 
+import { Roles } from '@cok/db';
+
 const t = initTRPC.context<Context>().create({
   transformer: superjson,
   errorFormatter({ shape }) {
@@ -9,11 +11,18 @@ const t = initTRPC.context<Context>().create({
   },
 });
 
-const isAuthed = t.middleware(({ ctx, next }) => {
+const isAuthed = (roles?: Roles[]) => t.middleware(({ ctx, next }) => {
   if (!ctx.session) {
     throw new TRPCError({
       code: "UNAUTHORIZED",
       message: "Not authenticated",
+    });
+  }
+
+  if (roles && !roles.includes(ctx.session.user.role)) {
+    throw new TRPCError({
+      code: "UNAUTHORIZED",
+      message: "Not authorized",
     });
   }
 
@@ -26,4 +35,6 @@ const isAuthed = t.middleware(({ ctx, next }) => {
 
 export const router = t.router;
 export const publicProcedure = t.procedure;
-export const protectedProcedure = t.procedure.use(isAuthed);
+
+// param as a set of roles
+export const protectedProcedure = (roles?: Roles[]) => t.procedure.use(isAuthed(roles));
