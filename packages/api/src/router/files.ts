@@ -6,10 +6,11 @@ import { getObjects, generatePresignedUploadUrl } from '@cok/files-core';
 import { Roles } from '@cok/db';
 
 export const filesRouter = router({
-    getFiles: protectedProcedure([Roles.ADMIN]).query(() => {
-        return getObjects();
-    }),
-    getPresignedUrl: publicProcedure
+    getFiles: protectedProcedure([Roles.ADMIN])
+        .query(() => {
+            return getObjects();
+        }),
+    getPresignedUrl: protectedProcedure([Roles.ADMIN])
         .input(
             z.object({
                 mimeType: z.string(),
