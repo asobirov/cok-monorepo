@@ -285,14 +285,14 @@ importers:
   packages/core/files:
     specifiers:
       '@aws-sdk/client-s3': ^3.231.0
-      '@aws-sdk/s3-presigned-post': ^3.231.0
+      '@aws-sdk/s3-request-presigner': ^3.231.0
       '@cok/env': workspace:*
       '@cok/tsconfig': workspace:*
       rimraf: ^3.0.2
       typescript: ^4.9.4
     dependencies:
       '@aws-sdk/client-s3': 3.231.0
-      '@aws-sdk/s3-presigned-post': 3.231.0
+      '@aws-sdk/s3-request-presigner': 3.231.0
       '@cok/env': link:../../env
     devDependencies:
       '@cok/tsconfig': link:../../tsconfig
@@ -1050,16 +1050,21 @@ packages:
       tslib: 2.4.1
     dev: false
 
-  /@aws-sdk/s3-presigned-post/3.231.0:
-    resolution: {integrity: sha512-prgtoabL6sqjZZkuo99dmlqyhc4gIBWLGI59ZQUEYUxQghFVL4B2ViBlGHo4KFrAwCiga2Xx9jb1Yt//m4T0gw==}
+  /@aws-sdk/s3-request-presigner/3.231.0:
+    resolution: {integrity: sha512-bbprPHsyl+brcoLsaT0Pbk1er+Yxjfsp6vnJW1Jn0G7O8gYwdnLL8Qbe1FGwEh5M1ddm9KIYO1eyIfSPSoecMQ==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-sdk/middleware-endpoint': 3.226.0
-      '@aws-sdk/signature-v4': 3.226.0
+      '@aws-sdk/middleware-sdk-s3': 3.231.0
+      '@aws-sdk/protocol-http': 3.226.0
+      '@aws-sdk/signature-v4-multi-region': 3.226.0
+      '@aws-sdk/smithy-client': 3.226.0
       '@aws-sdk/types': 3.226.0
+      '@aws-sdk/util-create-request': 3.226.0
       '@aws-sdk/util-format-url': 3.226.0
-      '@aws-sdk/util-hex-encoding': 3.201.0
       tslib: 2.4.1
+    transitivePeerDependencies:
+      - '@aws-sdk/signature-v4-crt'
     dev: false
 
   /@aws-sdk/service-error-classification/3.229.0:
@@ -1180,6 +1185,16 @@ packages:
     resolution: {integrity: sha512-DSRqwrERUsT34ug+anlMBIFooBEGwM8GejC7q00Y/9IPrQy50KnG5PW2NiTjuLKNi7pdEOlwTSEocJE15eDZIg==}
     engines: {node: '>=14.0.0'}
     dependencies:
+      tslib: 2.4.1
+    dev: false
+
+  /@aws-sdk/util-create-request/3.226.0:
+    resolution: {integrity: sha512-3WzrpO6Vx/Mh3DBnI3I7ZJ2oU9pDDusWkt7eCDULofamIz6IaZOjicwje0RJsLoFDh9LBdhrlp8m/5d+6aJn2g==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@aws-sdk/middleware-stack': 3.226.0
+      '@aws-sdk/smithy-client': 3.226.0
+      '@aws-sdk/types': 3.226.0
       tslib: 2.4.1
     dev: false
 

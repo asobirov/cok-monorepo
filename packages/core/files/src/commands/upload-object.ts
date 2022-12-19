@@ -1,5 +1,6 @@
-import { } from '@aws-sdk/client-s3';
-import { createPresignedPost } from '@aws-sdk/s3-presigned-post'
+import { PutObjectCommand } from '@aws-sdk/client-s3';
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+
 import { client } from '../client';
 import crypto from 'crypto'
 import { env } from '@cok/env';
@@ -7,21 +8,25 @@ import { env } from '@cok/env';
 type GenerateUploadUrlParams = {
     isPublic: boolean;
     mimeType: string;
+    fileName?: string;
 }
 
 export const generatePresignedUploadUrl = async ({
     isPublic,
-    mimeType
+    mimeType,
+    fileName
 }: GenerateUploadUrlParams) => {
 
     const folder = isPublic ? 'public' : 'private';
-    const key = `${folder}/${crypto.randomUUID()}`;
+    const extension = fileName?.split('.').pop() || mimeType.split('/').pop();
+    const key = `${folder}/${crypto.randomUUID()}${extension ? '.' + extension : ''}`
 
-    return await createPresignedPost(client, {
+    return await getSignedUrl(client, new PutObjectCommand({
         Bucket: env.DO_SPACES_BUCKET_NAME,
         Key: key,
-        Conditions: [
-            ["eq", "$Content-Type", mimeType],
-        ]
+        ContentType: mimeType,
+        ACL: isPublic ? 'public-read' : 'private',
+    }), {
+        expiresIn: 60 * 60 * 1 // 1 hour,
     })
 }

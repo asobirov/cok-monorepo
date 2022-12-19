@@ -8,23 +8,26 @@ export const filesRouter = router({
     getFiles: protectedProcedure.query(() => {
         return getObjects();
     }),
-    getPresignedUrl: protectedProcedure
+    getPresignedUrl: publicProcedure
         .input(
             z.object({
                 mimeType: z.string(),
                 isPublic: z.boolean().default(true),
+                fileName: z.string().optional(),
             })
         )
         .mutation(async ({
             input: {
                 mimeType,
-                isPublic
+                isPublic,
+                fileName
             }
         }) => {
             const url = await generatePresignedUploadUrl({
                 isPublic,
-                mimeType
-            })
+                mimeType,
+                fileName
+            },)
 
             return {
                 presignedUrl: url

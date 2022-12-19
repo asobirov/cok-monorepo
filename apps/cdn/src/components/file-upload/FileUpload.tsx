@@ -1,46 +1,26 @@
 import { useRef, useState } from "react";
 import { Cancel, CloudUpload } from "iconoir-react"
-import { trpc } from "../../utils/trpc";
-import axios from "axios";
+import { trpc } from "@utils/trpc";
 
 import { FileIcon } from "./FileIcon";
+import { useUploadFileMutation } from "@hooks/use-upload-file-mutation";
 
 
 export const FileUpload: React.FC = () => {
     const [droppedFiles, setDroppedFiles] = useState<File[] | null>(null);
-    const getPresignedUrlMuataion = trpc.files.getPresignedUrl.useMutation();
+
+    const uploadFileMutation = useUploadFileMutation();
 
     const handleUploadFiles = async () => {
         if (!droppedFiles) return;
 
-
         for (const file of droppedFiles) {
-            const { presignedUrl } = await getPresignedUrlMuataion.mutateAsync({
-                mimeType: file.type,
-                isPublic: true,
+            await uploadFileMutation.mutateAsync({
+                file,
+                isPublic: true
             });
 
-            const form = new FormData();
-
-            Object.entries(presignedUrl.fields).forEach(([key, value]) => {
-                form.append(key, value);
-            });
-
-            form.append("file", file);
-
-            console.log("Sending file", file.name, "to", presignedUrl.url)
-
-            try {
-                const response = await axios.post(presignedUrl.url, form, {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                        'Access-Control-Allow-Origin': '*',
-                        'Access-Control-Allow-Headers': '*',
-                    }
-                });
-            } catch (error) {
-                console.log(error);
-            }
+            console.log("Uploaded file", file);
         }
 
         setDroppedFiles(null);
