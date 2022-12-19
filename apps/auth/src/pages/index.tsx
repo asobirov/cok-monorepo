@@ -4,11 +4,7 @@ import { trpc } from "../utils/trpc";
 
 
 const Home: NextPage = () => {
-  const { data: session } = trpc.auth.getSession.useQuery();
-  const { data: secretMessage } = trpc.auth.getSecretMessage.useQuery(
-    undefined, // no input
-    { enabled: !!session?.user },
-  );
+  const { data: session } = trpc.getSession.useQuery();
 
   return (
     <div className="flex flex-col items-center justify-center gap-4">
