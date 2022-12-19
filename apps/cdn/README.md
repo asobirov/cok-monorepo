@@ -1,1 +1,1 @@
-# @cok/cdn
+# `@cok/cdn`

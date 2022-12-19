@@ -1,4 +1,5 @@
-# TODO:
+# `@cok/calendar`
+## TODO:
 
 ### Calendar UI
 - [ ] Always render 6 weeks (some months do not fit in 5 rows)
