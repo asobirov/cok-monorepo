@@ -1,0 +1,30 @@
+{
+  "name": "@cok/interface",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [
+    "interface"
+  ],
+  "main": "src/index.ts",
+  "repository": {
+    "directory": "packages/core/interface"
+  },
+  "scripts": {
+    "clean": "rimraf .turbo node_modules"
+  },
+  "dependencies": {
+    "next": "^13.0.7",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@cok/tsconfig": "workspace:*",
+    "@types/node": "^18.0.0",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
+    "eslint": "^8.29.0",
+    "eslint-config-next": "^13.0.7",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.9.4"
+  }
+}
