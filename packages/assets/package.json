@@ -1,0 +1,10 @@
+{
+  "name": "@cok/assets",
+  "description": "",
+  "keywords": [
+    "assets"
+  ],
+  "repository": {
+    "directory": "packages/assets"
+  }
+}
