@@ -255,6 +255,9 @@ importers:
       eslint: 8.29.0
       typescript: 4.9.4
 
+  packages/assets:
+    specifiers: {}
+
   packages/config/nextjs:
     specifiers:
       '@cok/tsconfig': workspace:*
@@ -322,6 +325,33 @@ importers:
       rimraf: 3.0.2
       typescript: 4.9.4
 
+  packages/core/interface:
+    specifiers:
+      '@cok/tsconfig': workspace:*
+      '@types/node': ^18.0.0
+      '@types/react': ^18.0.25
+      '@types/react-dom': ^18.0.9
+      eslint: ^8.29.0
+      eslint-config-next: ^13.0.7
+      next: ^13.0.7
+      react: 18.2.0
+      react-dom: 18.2.0
+      rimraf: ^3.0.2
+      typescript: ^4.9.4
+    dependencies:
+      next: 13.0.7_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    devDependencies:
+      '@cok/tsconfig': link:../../tsconfig
+      '@types/node': 18.11.13
+      '@types/react': 18.0.26
+      '@types/react-dom': 18.0.9
+      eslint: 8.29.0
+      eslint-config-next: 13.0.7_ha6vam6werchizxrnqvarmz2zu
+      rimraf: 3.0.2
+      typescript: 4.9.4
+
   packages/core/recall:
     specifiers:
       '@cok/tsconfig': workspace:*
@@ -330,16 +360,6 @@ importers:
     devDependencies:
       '@cok/tsconfig': link:../../tsconfig
       eslint: 8.29.0
-      typescript: 4.9.4
-
-  packages/core/ui:
-    specifiers:
-      '@cok/tsconfig': workspace:*
-      rimraf: ^3.0.2
-      typescript: ^4.9.4
-    devDependencies:
-      '@cok/tsconfig': link:../../tsconfig
-      rimraf: 3.0.2
       typescript: 4.9.4
 
   packages/db:
