@@ -2,7 +2,7 @@
 import { createTRPCNext } from "@trpc/next";
 import { httpBatchLink, loggerLink } from "@trpc/client";
 import { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
-import type { appRouter } from "@cok/api";
+import type { AppRouter } from "@cok/api";
 import { transformer } from "@cok/api/transformer";
 
 const getBaseUrl = () => {
@@ -12,9 +12,7 @@ const getBaseUrl = () => {
   return `http://localhost:${process.env.PORT ?? 3000}`; // dev SSR should use localhost
 };
 
-type AuthRouter = typeof appRouter["auth"];
-
-export const trpc = createTRPCNext<AuthRouter>({
+export const trpc = createTRPCNext<AppRouter>({
   config() {
     return {
       transformer,
@@ -37,10 +35,10 @@ export const trpc = createTRPCNext<AuthRouter>({
  * Inference helpers for input types
  * @example type HelloInput = RouterInputs['example']['hello']
  **/
-export type RouterInputs = inferRouterInputs<AuthRouter>;
+export type RouterInputs = inferRouterInputs<AppRouter>;
 
 /**
  * Inference helpers for output types
  * @example type HelloOutput = RouterOutputs['example']['hello']
  **/
-export type RouterOutputs = inferRouterOutputs<AuthRouter>;
+export type RouterOutputs = inferRouterOutputs<AppRouter>;
