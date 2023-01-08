@@ -1,5 +1,4 @@
 import type { GetServerSidePropsContext, NextPage } from "next";
-import { getServerAuthSession } from "@server/common/get-server-auth-session";
 import { trpc } from "../utils/trpc";
 
 import Skeleton from "@components/skeletons/Skeleton";
@@ -7,10 +6,13 @@ import StatCard from "@components/stats/StatCard";
 import { ClockOutline, DoubleCheck, EyeEmpty, Hourglass } from "iconoir-react";
 import dynamic from "next/dynamic";
 import { useSession } from "next-auth/react";
+import { NextPageWithLayout } from "src/types";
 
 const QuickStats: React.FC = () => {
-  const { data } = trpc.useQuery(["dashboard.getHomePageData"], {
-    ssr: false,
+  const { data } = trpc.dashboard.getHomePageData.useQuery(undefined, {
+    trpc: {
+      ssr: false,
+    }
   });
 
   if (!data) {
@@ -70,7 +72,7 @@ const LazyQuickStats = dynamic(() => Promise.resolve(QuickStats), {
   ssr: false,
 })
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
   const { data } = useSession();
 
   if (!data) {
@@ -94,22 +96,6 @@ const Home: NextPage = () => {
   );
 };
 
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  const session = await getServerAuthSession(ctx)
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/auth/signin?error=SessionRequired",
-        permanent: false,
-      }
-    }
-  }
-
-  return {
-    props: {
-      session
-    }
-  }
-}
+Home.auth = true;
 
 export default Home;

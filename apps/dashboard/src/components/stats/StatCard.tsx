@@ -15,11 +15,9 @@ const StatCard: React.FC<StatCard> = ({
         return (
             <Link
                 href={href}
-                passHref
+                className='cursor-pointer'
             >
-                <a className='cursor-pointer'>
-                    <StatCardBase {...props} />
-                </a>
+                <StatCardBase {...props} />
             </Link>
         )
     }

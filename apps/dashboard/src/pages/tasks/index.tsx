@@ -1,4 +1,4 @@
-import { SelectViewMode } from "@components/tasks/view-mode/SelectViewMode";
+import { SelectViewMode } from "@components/tasks/view-mode/select-view-mode";
 import { useCallback, useState } from "react";
 import { trpc } from '@utils/trpc';
 import { TasksViewModeContext } from "../../context/tasks-view-mode";
@@ -10,7 +10,7 @@ import { TasksView } from "@components/tasks/view";
 const TasksPage: NextPageWithLayout = () => {
     const [viewMode, setViewMode] = useState(TasksViewMode.List);
 
-    const createTaskMutation = trpc.useMutation(['tasks.createTask'])
+    const createTaskMutation = trpc.tasks.createTask.useMutation();
 
     const handleCreateTask = useCallback(async () => {
         createTaskMutation.mutate({

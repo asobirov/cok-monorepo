@@ -1,34 +1,24 @@
 {
   "extends": "@cok/tsconfig/nextjs.json",
+  "include": [
+    "next-env.d.ts",
+    "../../packages/core/auth/next-auth.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.cjs",
+    "**/*.mjs"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@common/*": [
-        "./src/common/*"
-      ],
-      "@lib/*": [
-        "./src/pages/lib/*"
-      ],
-      "@utils/*": [
-        "./src/utils/*"
-      ],
-      "@public/*": [
-        "./public/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@context/*": [
-        "./src/context/*"
-      ],
-      "@server/*": [
-        "./src/server/*"
-      ],
+      "@common/*": ["./src/common/*"],
+      "@lib/*": ["./src/pages/lib/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@public/*": ["./public/*"],
+      "@components/*": ["./src/components/*"],
+      "@context/*": ["./src/context/*"],
+      "@server/*": ["./src/server/*"]
     }
-  },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  }
 }

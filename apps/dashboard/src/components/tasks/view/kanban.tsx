@@ -1,8 +1,8 @@
 import { InfiniteData } from "react-query"
-import { inferQueryOutput } from "@utils/trpc"
+import { RouterOutputs } from "@utils/trpc"
 
 export const TasksKanbanView: React.FC<{
-    data: InfiniteData<inferQueryOutput<"tasks.getTasks">> | undefined
+    data: InfiniteData<RouterOutputs['tasks']['getTasks']> | undefined
 }> = ({ data }) => {
     return (
         <>

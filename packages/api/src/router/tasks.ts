@@ -1,3 +1,4 @@
+import { TaskStatus } from '@cok/db';
 import { z } from 'zod';
 
 import { protectedProcedure, publicProcedure, router } from "../trpc";
@@ -57,6 +58,31 @@ export const tasksRouter = router({
                     due
                 }
             });
+            return {
+                task
+            }
+        }),
+    markTask: protectedProcedure()
+        .input(z.object({
+            taskId: z.string(),
+            status: z.nativeEnum(TaskStatus)
+        }))
+        .mutation(async ({
+            ctx: { prisma },
+            input: {
+                taskId,
+                status
+            }
+        }) => {
+            const task = await prisma.task.update({
+                where: {
+                    id: taskId
+                },
+                data: {
+                    status
+                }
+            });
+
             return {
                 task
             }

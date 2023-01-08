@@ -1,4 +1,10 @@
 {
-  "extends": "@cok/tsconfig/node.json",
-  "include": ["src", "index.ts"]
+  "extends": "@cok/tsconfig/nextjs.json",
+  "include": [
+    "../../packages/core/auth/next-auth.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.cjs",
+    "**/*.mjs"
+  ]
 }

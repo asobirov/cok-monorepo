@@ -31,10 +31,6 @@ const pageGroups: {
             title: 'Finance',
             icon: <Wallet />,
             href: '/finance',
-        }, {
-            title: 'Mood Board',
-            icon: <SeaAndSun />,
-            href: '/mood-board',
         }]
     ];
 
@@ -49,11 +45,11 @@ const Sidebar: React.FC = () => {
                         <div className="flex-1">
                             {session?.user?.image ? (
                                 <div className="relative w-full pb-[100%]">
-                                    < Image
+                                    <Image
+                                        alt="User Image"
                                         src={session.user.image}
-                                        layout="fill"
-                                        objectFit="cover"
-                                        className="rounded-full"
+                                        fill
+                                        className="rounded-full object-cover"
                                     />
                                 </div>
                             ) : (

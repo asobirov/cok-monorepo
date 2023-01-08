@@ -14,11 +14,9 @@ const NotFoundPage: NextPageWithLayout = () => {
             </span>
             <Link
                 href="/"
-                passHref
+                className="border border-whiteAlpha-500 py-2 px-5 rounded-2xl"
             >
-                <a className="border border-whiteAlpha-500 py-2 px-5 rounded-2xl">
-                    Go Home
-                </a>
+                Go Home
             </Link>
         </div>
     )

@@ -1,4 +1,4 @@
-import { getServerAuthSession } from "@server/common/get-server-auth-session";
+import { getServerSession } from "@cok/auth-core";
 import { GetServerSidePropsContext } from "next";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
@@ -38,7 +38,7 @@ AuthSigninPage.auth = false;
 AuthSigninPage.layout = false;
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-    const session = await getServerAuthSession(ctx)
+    const session = await getServerSession(ctx)
     const { query: { callback } } = ctx
     if (session) {
         return {

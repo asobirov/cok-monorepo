@@ -11,9 +11,9 @@ import { TasksTableView } from "./table";
 export const TasksView: React.FC = () => {
     const { viewMode } = useContext(TasksViewModeContext);
 
-    const { data } = trpc.useInfiniteQuery(['tasks.getTasks', {
+    const { data } = trpc.tasks.getTasks.useInfiniteQuery({
         limit: 10,
-    }], {
+    }, {
         getNextPageParam: (lastPage) => lastPage.nextCursor,
     })
 
