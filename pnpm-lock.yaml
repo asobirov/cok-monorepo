@@ -113,7 +113,7 @@ importers:
       react-query: 3.39.2
       rimraf: ^3.0.2
       superjson: ^1.9.1
-      tailwindcss: ^3.1.8
+      tailwindcss: ^3.2.4
       typescript: 4.9.4
       zod: ^3.20.2
     dependencies:
@@ -212,11 +212,13 @@ importers:
   apps/dashboard:
     specifiers:
       '@cok/api': workspace:*
-      '@cok/auth-core': workspace:^0.1.0
+      '@cok/auth-core': workspace:*
       '@cok/db': workspace:*
       '@cok/interface': workspace:*
       '@cok/tailwind-config': workspace:*
       '@cok/tsconfig': workspace:*
+      '@dnd-kit/core': ^6.0.7
+      '@dnd-kit/sortable': ^7.0.2
       '@headlessui/react': ^1.7.3
       '@tanstack/react-query': ^4.20.4
       '@trpc/client': ^10.5.0
@@ -244,7 +246,7 @@ importers:
       react-dom: ^18.2.0
       react-intersection-observer: ^9.4.0
       rimraf: ^3.0.2
-      tailwindcss: ^3.1.8
+      tailwindcss: ^3.2.4
       typescript: 4.7.4
       zod: ^3.20.2
     dependencies:
@@ -253,6 +255,8 @@ importers:
       '@cok/db': link:../../packages/db
       '@cok/interface': link:../../packages/core/interface
       '@cok/tailwind-config': link:../../packages/config/tailwind
+      '@dnd-kit/core': 6.0.7_biqbaboplfbrettd7655fr4n2y
+      '@dnd-kit/sortable': 7.0.2_pmudlfv2z3i7vvlookxjkeidxe
       '@headlessui/react': 1.7.3_biqbaboplfbrettd7655fr4n2y
       '@tanstack/react-query': 4.20.4_biqbaboplfbrettd7655fr4n2y
       '@trpc/client': 10.5.0_@trpc+server@10.5.0
@@ -420,8 +424,10 @@ importers:
       '@types/react': ^18.0.25
       '@types/react-dom': ^18.0.9
       autoprefixer: ^10.4.13
+      class-variance-authority: ^0.4.0
       eslint: ^8.29.0
       eslint-config-next: ^13.0.7
+      iconoir-react: ^5.5.2
       next: ^13.0.7
       next-auth: ^4.18.6
       postcss: ^8.4.19
@@ -441,6 +447,8 @@ importers:
       '@trpc/next': 10.5.0_pd3elg5u3zlm453dd4mbgdu4mm
       '@trpc/react-query': 10.5.0_hkttq5uvq7kltri3tppuogqqou
       '@trpc/server': 10.5.0
+      class-variance-authority: 0.4.0_typescript@4.9.4
+      iconoir-react: 5.5.2_react@18.2.0
       next: 13.0.7_biqbaboplfbrettd7655fr4n2y
       next-auth: 4.18.6_gvvct4imq5upoiloat43sswrza
       react: 18.2.0
@@ -1537,6 +1545,49 @@ packages:
 
   /@changesets/types/4.1.0:
     resolution: {integrity: sha512-LDQvVDv5Kb50ny2s25Fhm3d9QSZimsoUGBsUioj6MC3qbMUCuC8GPIvk/M6IvXx3lYhAs0lwWUQLb+VIEUCECw==}
+    dev: false
+
+  /@dnd-kit/accessibility/3.0.1_react@18.2.0:
+    resolution: {integrity: sha512-HXRrwS9YUYQO9lFRc/49uO/VICbM+O+ZRpFDe9Pd1rwVv2PCNkRiTZRdxrDgng/UkvdC3Re9r2vwPpXXrWeFzg==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+      tslib: 2.4.1
+    dev: false
+
+  /@dnd-kit/core/6.0.7_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-qcLBTVTjmLuLqC0RHQ+dFKN5neWmAI56H9xZ+he9WEJEkAvR76YAcz7DSWDJfjErepfG2H3Fkb9lYiX7cPR62g==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@dnd-kit/accessibility': 3.0.1_react@18.2.0
+      '@dnd-kit/utilities': 3.2.1_react@18.2.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      tslib: 2.4.1
+    dev: false
+
+  /@dnd-kit/sortable/7.0.2_pmudlfv2z3i7vvlookxjkeidxe:
+    resolution: {integrity: sha512-wDkBHHf9iCi1veM834Gbk1429bd4lHX4RpAwT0y2cHLf246GAvU2sVw/oxWNpPKQNQRQaeGXhAVgrOl1IT+iyA==}
+    peerDependencies:
+      '@dnd-kit/core': ^6.0.7
+      react: '>=16.8.0'
+    dependencies:
+      '@dnd-kit/core': 6.0.7_biqbaboplfbrettd7655fr4n2y
+      '@dnd-kit/utilities': 3.2.1_react@18.2.0
+      react: 18.2.0
+      tslib: 2.4.1
+    dev: false
+
+  /@dnd-kit/utilities/3.2.1_react@18.2.0:
+    resolution: {integrity: sha512-OOXqISfvBw/1REtkSK2N3Fi2EQiLMlWUlqnOK/UpOISqBZPWpE6TqL+jcPtMOkE8TqYGiURvRdPSI9hltNUjEA==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+      tslib: 2.4.1
     dev: false
 
   /@emotion/is-prop-valid/0.8.8:
@@ -3276,6 +3327,17 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /class-variance-authority/0.4.0_typescript@4.9.4:
+    resolution: {integrity: sha512-74enNN8O9ZNieycac/y8FxqgyzZhZbxmCitAtAeUrLPlxjSd5zA7LfpprmxEcOmQBnaGs5hYhiSGnJ0mqrtBLQ==}
+    peerDependencies:
+      typescript: '>= 4.5.5 < 5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 4.9.4
+    dev: false
 
   /client-only/0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}

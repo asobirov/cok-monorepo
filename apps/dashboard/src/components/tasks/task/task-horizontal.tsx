@@ -1,7 +1,6 @@
 import { RouterOutputs, trpc } from "@utils/trpc"
-import { getRelativeTime } from "@utils/get-relative-time";
 
-import { Checkbox } from "@cok/interface/components/checkbox";
+import { Checkbox } from "@components/Checkbox";
 import { useState } from "react";
 import { TaskStatus } from "@cok/db";
 import { useDebounce } from "@hooks/use-debounce";
@@ -9,9 +8,9 @@ import { useEffect } from "react";
 
 type QueryOutput = RouterOutputs['tasks']['getTasks'];
 
-type TaskProps = QueryOutput["tasks"][number];
+type TaskHorizontalProps = QueryOutput["tasks"][number];
 
-export const TaskHorizontal: React.FC<TaskProps> = ({
+export const TaskHorizontal: React.FC<TaskHorizontalProps> = ({
     id,
     title,
     description,
@@ -21,6 +20,7 @@ export const TaskHorizontal: React.FC<TaskProps> = ({
     const [taskStatus, setTaskStatus] = useState<TaskStatus>(status);
 
     const debouncedTaskStatus = useDebounce(taskStatus, 500);
+
     const trpcUtils = trpc.useContext();
     const markTaskMutation = trpc.tasks.markTask.useMutation({
         onSuccess: (input) => {
@@ -35,6 +35,10 @@ export const TaskHorizontal: React.FC<TaskProps> = ({
 
     useEffect(() => {
         try {
+            if (debouncedTaskStatus === taskStatus) {
+                return;
+            }
+
             markTaskMutation.mutate({
                 taskId: id,
                 status: debouncedTaskStatus
@@ -45,23 +49,26 @@ export const TaskHorizontal: React.FC<TaskProps> = ({
     }, [debouncedTaskStatus])
 
     return (
-        <div className="flex flex-row flex-1 justify-between px-6 py-5 border border-whiteAlpha-200 rounded-3xl">
+        <div className="flex flex-row flex-1 justify-between px-4 py-4 border border-whiteAlpha-200 rounded-[1.25rem]">
             <div className="inline-flex flex-1 items-start flex-row gap-3 ">
                 <Checkbox
                     checked={taskStatus === "DONE"}
-                    onChange={handleCheckboxChange}
-                    className="w-4 h-4 p-2 text-indigo-600 border-gray-300 bg-none rounded focus:ring-indigo-50"
+                    onChange={(c) => handleCheckboxChange(c)}
                 />
                 <div className="flex flex-col flex-1">
                     <div className="inline-flex flex-row justify-between items-center w-full mb-2">
-                        <h3 className="text-lg font-medium leading-none">
+                        <h3 className="text-md font-medium leading-none">
                             {title}
                         </h3>
-                        <span className="leading-none">
-                            Due by {due && getRelativeTime(new Date(), due)}
+                        <span className="text-sm leading-none">
+                            {due && new Date(due).toLocaleDateString(undefined, {
+                                month: "short",
+                                day: "numeric",
+                                year: "numeric"
+                            })}
                         </span>
                     </div>
-                    <p className="text-whiteAlpha-700 line-clamp-2">
+                    <p className="text-whiteAlpha-700 text-base line-clamp-2">
                         {description}
                     </p>
                 </div>

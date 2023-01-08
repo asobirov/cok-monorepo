@@ -10,7 +10,12 @@ import { TasksView } from "@components/tasks/view";
 const TasksPage: NextPageWithLayout = () => {
     const [viewMode, setViewMode] = useState(TasksViewMode.List);
 
-    const createTaskMutation = trpc.tasks.createTask.useMutation();
+    const trpcUtils = trpc.useContext();
+    const createTaskMutation = trpc.tasks.createTask.useMutation({
+        onSuccess: () => {
+            trpcUtils.tasks.getTasks.invalidate()
+        }
+    });
 
     const handleCreateTask = useCallback(async () => {
         createTaskMutation.mutate({

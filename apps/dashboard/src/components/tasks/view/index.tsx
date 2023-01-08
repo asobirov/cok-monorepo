@@ -6,7 +6,7 @@ import { TasksViewMode } from "../../../types/enums";
 
 import { TasksKanbanView } from "./kanban";
 import { TasksListView } from "./list";
-import { TasksTableView } from "./table";
+import { TasksGridView } from "./grid";
 
 export const TasksView: React.FC = () => {
     const { viewMode } = useContext(TasksViewModeContext);
@@ -17,23 +17,11 @@ export const TasksView: React.FC = () => {
         getNextPageParam: (lastPage) => lastPage.nextCursor,
     })
 
-    if (viewMode === TasksViewMode.Kanban) {
-        return (
-            <TasksKanbanView data={data} />
-        )
-    }
+    const viewModeMap = {
+        [TasksViewMode.Kanban]: <TasksKanbanView data={data} />,
+        [TasksViewMode.List]: <TasksListView data={data} />,
+        [TasksViewMode.Grid]: <TasksGridView data={data} />,
+    } as const
 
-    if (viewMode === TasksViewMode.Table) {
-        return (
-            <TasksTableView data={data} />
-        )
-    }
-
-    if (viewMode === TasksViewMode.List) {
-        return (
-            <TasksListView data={data} />
-        )
-    }
-
-    return null;
+    return viewModeMap[viewMode] || null;
 }

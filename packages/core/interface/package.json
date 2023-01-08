@@ -5,7 +5,8 @@
   "keywords": [
     "interface"
   ],
-  "main": "index.ts",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "repository": {
     "directory": "packages/core/interface"
   },
@@ -22,6 +23,8 @@
     "@trpc/next": "^10.5.0",
     "@trpc/react-query": "^10.5.0",
     "@trpc/server": "^10.5.0",
+    "class-variance-authority": "^0.4.0",
+    "iconoir-react": "^5.5.2",
     "next": "^13.0.7",
     "next-auth": "^4.18.6",
     "react": "18.2.0",

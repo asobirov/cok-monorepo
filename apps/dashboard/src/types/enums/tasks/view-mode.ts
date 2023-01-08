@@ -1,5 +1,5 @@
 export enum TasksViewMode {
     List = 'list',
-    Table = 'table',
+    Grid = 'grid',
     Kanban = 'kanban',
 }

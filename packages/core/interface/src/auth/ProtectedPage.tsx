@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect } from "react";
-import { trpc } from "../utils/trpc";
+import { trpc } from "../../utils/trpc";
 
 type ProtectedPageProps = {
     children: React.ReactNode;

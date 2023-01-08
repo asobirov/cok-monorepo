@@ -1,9 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "../../core/interface/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: {
+    files: [
+      "../../packages/core/interface/src/**/*.{js,jsx,ts,tsx}",
+      "./src/**/*.{js,jsx,ts,tsx}",
+    ]
+  },
   plugins: [
     require("@tailwindcss/line-clamp"),
   ],
