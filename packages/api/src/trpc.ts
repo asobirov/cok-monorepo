@@ -37,4 +37,10 @@ export const router = t.router;
 export const publicProcedure = t.procedure;
 
 // param as a set of roles
-export const protectedProcedure = (roles?: Roles[]) => t.procedure.use(isAuthed(roles));
+const defaultProtectedProcedureRoles = [Roles.ADMIN];
+export const protectedProcedure = (opts?: { roles: Roles[] }) => {
+  const {
+    roles = defaultProtectedProcedureRoles
+  } = opts || {};
+  return t.procedure.use(isAuthed(roles))
+};

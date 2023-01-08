@@ -1,12 +1,14 @@
-import axios from 'axios';
 import { z } from 'zod';
-import { protectedRouter } from "../context";
 
-import { getClosestEventByUrl, parseICalFromUrl } from '@utils/ical';
+import { protectedProcedure, publicProcedure, router } from "../trpc";
 
-export const dashboardRouter = protectedRouter()
-    .query("getHomePageData", {
-        async resolve({ ctx: { prisma } }) {
+import { getClosestEventByUrl } from '@cok/ical-utils';
+
+export const dashboardRouter = router({
+    getHomePageData: protectedProcedure()
+        .query(async ({
+            ctx: { prisma },
+        }) => {
             // NOTE: Not sure if calendar should be requested on every route request
             const calendar = await prisma.calendar.findFirst({
                 where: {
@@ -35,21 +37,19 @@ export const dashboardRouter = protectedRouter()
                     completedThisWeekCount: "69",
                 },
             };
-        },
-    })
-    .mutation("addCalendarSource", {
-        input: z
-            .object({
-                name: z.string(),
-                url: z.string().url(),
-            }),
-        async resolve({
+        }),
+    addCalendarSource: protectedProcedure()
+        .input(z.object({
+            name: z.string(),
+            url: z.string().url(),
+        }))
+        .mutation(async ({
             ctx: { prisma },
             input: {
                 name,
                 url
             }
-        }) {
+        }) => {
             const createCal = await prisma.calendar.create({
                 data: {
                     name,
@@ -60,25 +60,21 @@ export const dashboardRouter = protectedRouter()
             return {
                 calendar: createCal
             }
-        }
-    })
-    .mutation("deleteCalendarSource", {
-        input: z
-            .object({
-                id: z.string()
-            }),
-        async resolve({
+        }),
+    deleteCalendarSource: protectedProcedure()
+        .input(z.object({
+            id: z.string(),
+        }))
+        .mutation(async ({
             ctx: { prisma },
             input: { id }
-        }) {
+        }) => {
             const deleteCal = await prisma.calendar.delete({
-                where: {
-                    id
-                }
+                where: { id }
             })
 
             return {
                 calendar: deleteCal
             }
-        }
-    })
+        })
+})

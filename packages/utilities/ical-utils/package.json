@@ -1,0 +1,24 @@
+{
+  "name": "@cok/ical-utils",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [
+    "ical-utils"
+  ],
+  "main": "src/index.ts",
+  "repository": {
+    "directory": "packages/utilities/ical-utils"
+  },
+  "scripts": {
+    "clean": "rimraf .turbo node_modules"
+  },
+  "dependencies": {
+    "axios": "^1.2.2",
+    "node-ical": "^0.15.1"
+  },
+  "devDependencies": {
+    "@cok/tsconfig": "workspace:*",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.9.4"
+  }
+}

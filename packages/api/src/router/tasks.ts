@@ -1,19 +1,20 @@
 import { z } from 'zod';
-import { protectedRouter } from "../context";
 
-export const tasksRouter = protectedRouter()
-    .query("getTasks", {
-        input: z.object({
+import { protectedProcedure, publicProcedure, router } from "../trpc";
+
+export const tasksRouter = router({
+    getTasks: protectedProcedure()
+        .input(z.object({
             limit: z.number().min(1).max(100).default(20),
             cursor: z.string().nullish(),
-        }),
-        async resolve({
+        }))
+        .query(async ({
             ctx: { prisma },
             input: {
                 limit,
                 cursor
             }
-        }) {
+        }) => {
             const tasks = await prisma.task.findMany({
                 take: limit + 1,
                 cursor: cursor ? {
@@ -27,39 +28,37 @@ export const tasksRouter = protectedRouter()
             let nextCursor: typeof cursor | undefined = undefined;
             if (tasks.length > limit) {
                 const nextItem = tasks.pop()
-                nextCursor = nextItem!.id;
+                nextCursor = nextItem?.id ?? null;
             }
 
             return {
                 tasks,
                 nextCursor
             }
-        }
-    })
-    .mutation("createTask", {
-        input: z.object({
+        }),
+    createTask: protectedProcedure()
+        .input(z.object({
             title: z.string().min(1).max(100),
             description: z.string().min(1).max(512).nullish().default(null),
             due: z.date().optional(),
-        }),
-        async resolve({
+        }))
+        .mutation(async ({
             ctx: { prisma },
             input: {
                 title,
                 description,
                 due
             }
-        }) {
+        }) => {
             const task = await prisma.task.create({
                 data: {
                     title,
                     description: description,
                     due
                 }
-            })
-
+            });
             return {
                 task
             }
-        }
-    })
+        })
+});

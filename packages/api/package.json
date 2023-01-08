@@ -10,9 +10,10 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@cok/auth-core": "*",
-    "@cok/db": "*",
-    "@cok/files-core": "workspace:^0.0.1",
+    "@cok/auth-core": "workspace:*",
+    "@cok/db": "workspace:*",
+    "@cok/files-core": "workspace:*",
+    "@cok/ical-utils": "workspace:*",
     "@trpc/client": "^10.5.0",
     "@trpc/server": "^10.5.0",
     "superjson": "1.9.1",
