@@ -1,0 +1,58 @@
+{
+  "name": "@cok/dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm with-env next dev",
+    "build": "pnpm with-env next build",
+    "clean": "rimraf .turbo .next node_modules",
+    "start": "pnpm with-env next start -p 3069",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@cok/db": "workspace:*",
+    "@headlessui/react": "^1.7.3",
+    "@next-auth/prisma-adapter": "^1.0.5",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "@trpc/client": "^9.27.2",
+    "@trpc/next": "^9.27.2",
+    "@trpc/react": "^9.27.2",
+    "@trpc/server": "^9.27.2",
+    "axios": "^1.0.0",
+    "clsx": "^1.2.1",
+    "date-fns": "^2.29.3",
+    "framer-motion": "^7.4.0",
+    "iconoir-react": "^5.4.0",
+    "next": "^12.3.2",
+    "next-auth": "^4.15.0",
+    "node-ical": "^0.15.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.4.0",
+    "react-query": "3.39.2",
+    "superjson": "^1.10.0",
+    "zod": "^3.20.2"
+  },
+  "devDependencies": {
+    "@cok/tsconfig": "workspace:*",
+    "@types/node": "18.0.0",
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "autoprefixer": "^10.4.12",
+    "dotenv-cli": "^6.0.0",
+    "eslint": "8.22.0",
+    "eslint-config-next": "12.3.1",
+    "next-transpile-modules": "^10.0.0",
+    "postcss": "^8.4.16",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^3.1.8",
+    "typescript": "4.7.4"
+  },
+  "ct3aMetadata": {
+    "initVersion": "5.13.1"
+  }
+}

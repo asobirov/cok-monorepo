@@ -1,0 +1,245 @@
+@tailwind base;
+
+html {
+  font-family: Poppins, Avenir Next, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  transition-duration: 250ms;
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
+
+  @apply md:!overflow-unset bg-primary-dark text-whiteAlpha-900;
+}
+
+::selection {
+  @apply bg-none text-whiteAlpha-500;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container {
+    min-width: 16rem;
+    transition: padding 0.8s ease-in-out, max-width 0.8s ease, box-shadow 250ms;
+    @apply max-w-[26rem] sm:max-w-[38rem] md:max-w-[45rem] lg:max-w-[60rem];
+  }
+
+  .button {
+    @apply flex h-12 w-12 select-none items-center justify-center rounded-[1.25rem] border border-blackAlpha-700 hover:bg-blackAlpha-200 active:border-0 active:border-transparent-black active:bg-blackAlpha-300 dark:border-whiteAlpha-300 hover:dark:bg-whiteAlpha-200 active:dark:border-transparent-white active:dark:bg-black;
+  }
+
+  .color-on-hover {
+    @apply text-blackAlpha-700 hover:text-black active:text-black dark:text-whiteAlpha-700 dark:hover:text-white dark:active:text-white;
+  }
+
+  .glitch {
+    --f-size: 15;
+    --f-unit: 1vmin;
+    --f: calc(var(--f-size) * var(--f-unit));
+
+    @apply m-auto font-light text-center text-blackAlpha-600 dark:text-whiteAlpha-700;
+    line-height: 0.75;
+    transform: scaleX(var(--scale, 1));
+    animation: glitch-text 11s infinite alternate;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    --top: 0;
+    --left: 0;
+    --v-height: 30%;
+
+    --n-tenth: calc(var(--f-size) * 0.1 * var(--top));
+    --t-cut: calc(var(--n-tenth) / var(--f-size) * 100%);
+    --b-cut: calc(var(--t-cut) + var(--v-height));
+
+    @apply absolute w-full left-0 text-center;
+
+    content: attr(data-text);
+    transform: translateX(calc(var(--left) * 100%));
+    filter: drop-shadow(0 0 transparent);
+    text-shadow: calc(var(--left) * -3em) 0 0.02em #aaeaaa,
+      calc(var(--left) * -6em) 0 0.02em #df92d6;
+    background-color: var(--bg);
+    clip-path: polygon(
+      0% var(--t-cut),
+      100% var(--t-cut),
+      100% var(--b-cut),
+      0% var(--b-cut)
+    );
+  }
+
+  .glitch::before {
+    animation: glitch-b 1.7s infinite alternate-reverse;
+  }
+
+  .glitch::after {
+    animation: glitch-a 3.1s infinite alternate;
+  }
+
+  /** Buttons */
+
+  .icon-button {
+    @apply flex items-center justify-center p-3 text-xs aspect-square border rounded-2xl cursor-pointer transition-colors duration-100 ease;
+  }
+
+  .icon-button.solid {
+    @apply bg-blackAlpha-700 border-whiteAlpha-200 hover:bg-whiteAlpha-200;
+  }
+
+  .icon-button.outline {
+    @apply border-whiteAlpha-50 hover:bg-whiteAlpha-200;
+  }
+
+  .icon-button.ghost {
+    @apply border-white/0 hover:bg-whiteAlpha-50;
+  }
+
+  .icon-button[data-active] {
+    @apply !border-whiteAlpha-200
+  }
+
+}
+
+@layer utilities {
+  .overflow-unset {
+    overflow: unset;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ease {
+    transition-timing-function: ease;
+  }
+}
+
+@keyframes glitch-text {
+  17% {
+    --scale: 0.87;
+    @apply font-thin;
+  }
+
+  31% {
+    --scale: 1.02;
+    @apply font-mono;
+  }
+
+  37% {
+    --scale: 0.9;
+    @apply font-extralight;
+  }
+
+  47% {
+    --scale: 0.93;
+    @apply font-serif;
+  }
+
+  87% {
+    --scale: 1;
+    @apply font-sans;
+  }
+}
+
+@keyframes glitch-a {
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    --top: 0;
+    --left: 0;
+  }
+
+  0% {
+    --v-height: 15%;
+  }
+
+  20% {
+    --left: 0.005;
+  }
+
+  40% {
+    --left: 0.01;
+    --v-height: 20%;
+    --top: 3;
+  }
+
+  60% {
+    --left: 0.03;
+    --v-height: 25%;
+    --top: 6;
+  }
+
+  80% {
+    --left: 0.07;
+    --v-height: 5%;
+    --top: 8;
+  }
+
+  100% {
+    --left: 0.083;
+    --v-height: 30%;
+    --top: 1;
+  }
+}
+
+@keyframes glitch-b {
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    --top: 0;
+    --left: 0;
+  }
+
+  0% {
+    --v-height: 15%;
+    --top: 10;
+  }
+
+  20% {
+    --left: -0.005;
+  }
+
+  40% {
+    --left: -0.01;
+    --v-height: 17%;
+    --top: 3;
+  }
+
+  60% {
+    --left: -0.03;
+    --v-height: 35%;
+    --top: 6;
+  }
+
+  80% {
+    --left: -0.07;
+    --v-height: 5%;
+    --top: 8;
+  }
+
+  100% {
+    --left: -0.083;
+    --v-height: 30%;
+    --top: 1;
+  }
+}
